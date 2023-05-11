@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% block title %}
+        <title> Bibliotheque locale</title>
+        {% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    </head>
+    <body>
+         <!-- On ajoute un block django portant le nom content -->
+         {% block content %}
+            {% if machines %}
+            <!-- Recuperation du contexte -->
+                {% for machine in machines %}
+                    <p>
+                        <b> {{ machine.id}} </b> {{ machine.nom }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                Pas de machines.
+             {% endif %}
+            <!-- Important de fermer le block -->
+            {% endblock %}
+
+    </body>
+</html>
