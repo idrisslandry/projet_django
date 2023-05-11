@@ -23,6 +23,7 @@ class Machine(models.Model):
         return str(self.id) + " " + self.nom
     
 class Personnel(models.Model):
+     
     id = models.AutoField(
                     primary_key=True,
                     editable=False)
