@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>R&T</title>
+
+    <link href="../../static/css/style2.css" rel= "stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">R&T</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="{% url 'index' %}">Accueil</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'commus' %}">Commutateurs</a>
+        <a class="nav-link" href="{% url 'routeurs' %}">Routeurs</a>
+        
+        {% if user.compte %}
+          <a class="nav-link" href="{% url 'compte' %}">{{ user.username }}</a>
+        {% endif %}
+        
+          <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+          <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+
+
+      </nav>
+    </div>
+  </header>
+
+     <h1>Ajouter un commutateur</h1>
+     <!-- Argument action permet de renvoyer sur l'url voulu  -->
+     
+     <form method="POST" class="post-form">
+        {% csrf_token %}    <!-- Balise qui met un jetton dans les données envoyer pour controler la conformité des données transmise (=CRC) -->
+        {{ form.as_p }} <!--Insertion du formulaire-->
+        
+        
+        <!--BOUTON Retour-->
+        <input class="btn btn-secondary my-2" type="button" value="retour" onclick="history.go(-1)">
+        <!--BOUTON d'Ajout-->
+        <button type="submit" class="btn btn-secondary my-2">Confirmer la modifier</button>
+     </form>
+        

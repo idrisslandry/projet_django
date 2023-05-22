@@ -1,41 +1,68 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        {% block title %}
-        <title> Bibliotheque locale</title>
-        {% endblock %}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
-    <body>
-        <h1> R&T Dev </h1>
+<!doctype html>
+<html lang="fr" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>R&T </title>
+    
+    <link href="../../static/css/style2.css" rel= "stylesheet">
 
-         {% block sidebar %}
-            <h2> Menu </h2>
-            <ul id="menu">
-                <li> <a href="{% url 'index' %}">Home</a></li>
-                <li> <a href="{% url 'machines' %}">Machines</a></li>
-                <li> <a href="{% url 'personnels' %}">Personnels</a></li>
-                <li> <a href="{% url 'add-machine' %">Ajouter une machine</a></li>
-            </ul>
-         {% endblock %}
-         {% block menu %}
-                <h2> Menu </h2>
-                <ul id="menu">
-                    <li> <a href="{% url 'index' %}">Home</a></li>
-                </ul>
-         {% endblock %}
-         {% load static %}
-        <img src=" {% static 'computerApp/images/rtdev.png' %}"
-        alt="logo" style="width:200px; height:200px;">
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
 
-         {% block content %}
-                Blabla de la premiere page
-         {% endblock %}
-            
-            
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">R&T</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Accueil</a>
+        <a class="nav-link" href="{% url 'commus' %}">Commutateurs</a>
+        <a class="nav-link" href="{% url 'routeurs' %}">Routeurs</a>
 
-    </body>
+        {% if user.compte %}
+          <a class="nav-link" href="{% url 'compte' %}">{{ user.username }}</a>
+        {% endif %}
+        
+        
+          <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+          <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+       
+
+      </nav>
+    </div>
+  </header>
+  
+  <main class="px-3">
+    <h1>Home page</h1>
+    <p class="lead">
+      Cette page a pour but de résumer les équipements de l'entreprise R&T Development.
+      Accès uniquement réservé aux personnels du service informatique de l'entreprise.
+    </p>
+    
+    <p class="lead">
+      <a href="{% url 'commus' %}" class="btn btn-secondary my-2">Commutateurs</a>
+      <a href="{% url 'routeurs' %}" class="btn btn-secondary my-2">Routeurs</a>
+    </p>
+      {% if user.is_authenticated %}
+          <a href="https://app.diagrams.net/" class="btn btn-secondary my-2">Typologie</a>
+      {% else %}
+          <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+      {% endif %}
+    
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Created by Idriss-Landry </p>
+  </footer>
+</div>
+
+</body>
 </html>
+
+
+

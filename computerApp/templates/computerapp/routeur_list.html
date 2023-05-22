@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>R&T</title>
+
+    <link href="../../static/css/style2.css" rel= "stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">R&T</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="{% url 'index' %}">Accueil</a>
+        <a class="nav-link" href="{% url 'commus' %}">Commutateurs</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'routeurs' %}">Routeurs</a>
+        
+        {% if user.compte %}
+          <a class="nav-link" href="{% url 'compte' %}">{{ user.username }}</a>
+        {% endif %}
+        
+          <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+          <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+
+      </nav>
+    </div>
+  </header>
+
+{% block content %}
+<br><br>
+    <h1> Liste des Routeurs</h1>
+    <br>
+    {% if routeurs %}
+    <div class="div1">
+        {% for routeur in routeurs %}
+        <div class="div2">
+            <h3>{{ routeur.name }} ({{ routeur.zone }})</h3>
+            {% load static %}
+            <img src="{% static 'computerapp/images/r1.jpeg' %}" alt="{{ commu.name }}">
+        
+            <!-- <a href= "{% url 'routeur_detail' routeur.slug %}"> Voir detail </a>  Autre methode--> 
+            <a class="btn btn-secondary my-2" href= "{{ routeur.get_absolute_url }}"> Voir detail </a>
+        </div>
+        <br><br>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Il n\'y a pas de Routeurs. </p>
+ {% endif %}
+
+ <a class="btn btn-secondary my-2" href="{% url 'add_routeur' %}">Ajouter</a>
+ <br><br>
+{% endblock %}

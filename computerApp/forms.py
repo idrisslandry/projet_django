@@ -1,12 +1,33 @@
-from django import forms
-from django.core.exceptions import ValidationError
 
-class AddMachineForm(forms.Form) :
-    nom = forms.CharField(required=True, label='Nom de la machine')
+from django.forms import ModelForm
 
-    def clean_nom(self):
-        data = self.cleaned_data["nom"]
-        if len(data) != 6:
-            raise ValidationError(("Erreur de format pour le champ nom"))
 
-        return data
+from computerApp.models import Commu, Routeur
+#from django.views.generic import DeleteView, UpdateView
+
+
+class Add_commu_form(ModelForm):
+    class Meta: #class qui utilise une classe
+        model = Commu # Quel modele utilisé pour créer le formulaire
+        fields = ['name', 'slug', 'marque', 'administrateur', 'zone', 'configuration', 'detail', 'thumbnail'] #Les champs a afficher
+
+
+class Add_routeur_form(ModelForm):
+    class Meta: #class qui utilise une classe
+        model = Routeur # Quel modele utilisé pour créer le formulaire
+        fields = ['name', 'slug', 'marque', 'administrateur', 'zone', 'configuration', 'detail', 'thumbnail'] #Les champs a afficher
+
+
+
+
+class Edit_commu_form(ModelForm):
+  class Meta: #class qui utilise une classe
+      model = Commu # Quel modele utilisé pour créer le formulaire
+      fields = ['name', 'slug', 'marque', 'administrateur', 'zone', 'configuration', 'detail', 'thumbnail'] #Les champs a afficher
+
+
+class Edit_routeur_form(ModelForm):
+    class Meta: #class qui utilise une classe
+      model = Routeur # Quel modele utilisé pour créer le formulaire
+      fields = ['name', 'slug', 'marque', 'administrateur', 'zone', 'configuration', 'detail', 'thumbnail'] #Les champs a afficher
+

@@ -1,42 +1,38 @@
-import datetime
+
 from django.db import models
+from django.urls import reverse
 
-# Create your models here.
-class Machine(models.Model):
-    TYPE = (
-        ('PC',('PC - Run windows')),
-        ('Mac',('MAc - Run MacOS')),
-        ('Serveur',('Serveur - Simple Server to deploy virtual machines')),
-        ('Switch',('Switch - To maintains and connect servers')),
-    )
-    id = models.AutoField(
-                    primary_key=True,
-                    editable=False)
-    nom= models.CharField(
-                max_length=6)
-    maintenaceDate = models.DateField(default= datetime.datetime.now())
-    mach = models.CharField(max_length=32, choices=TYPE,default='PC')
-    def __str__(self):
-        return str(self.id) + " -> " + self.nom
 
-    def get_name(self):
-        return str(self.id) + " " + self.nom
-    
-class Personnel(models.Model):
-     
-    id = models.AutoField(
-                    primary_key=True,
-                    editable=False)
-    nom= models.CharField(
-                max_length=10)
-    prenom= models.CharField(
-                max_length=10,
-                default="")
-    def __str__(self):
-        return str(self.id) + " -> " + self.nom
+class Commu(models.Model): #Class de base
+    name= models.CharField(max_length= 19)
+    slug = models.SlugField(max_length=128)
+    marque = models.CharField(max_length= 128)
+    administrateur = models.CharField(max_length= 20)
+    zone = models.CharField(max_length= 50)
+    configuration = models.TextField(blank=True)
+    detail = models.TextField(blank=True) 
+    thumbnail = models.ImageField(upload_to="images", blank=True, null=True)
 
-    def get_name(self):
-        return str(self.id) + " " + self.nom
+    def __str__ (self):
+        return str(self.name)
 
-    def get_surname(self):
-        return str(self.id) + " " + self.prenom
+    def get_absolute_url(self):
+        return reverse("commu_detail", kwargs={"slug": self.slug})
+   
+
+
+class Routeur(models.Model):
+    name = models.CharField(max_length= 19)
+    slug = models.SlugField(max_length=128)
+    marque = models.CharField(max_length= 128)
+    administrateur = models.CharField(max_length= 20)
+    zone = models.CharField(max_length= 50)
+    configuration = models.TextField(blank=True)
+    detail = models.TextField(blank=True) #Pas forcement de description
+    thumbnail = models.ImageField(upload_to="images", blank=True, null=True)
+
+    def __str__ (self):
+        return str(self.name)
+        
+    def get_absolute_url(self):
+        return reverse("routeur_detail", kwargs={"slug": self.slug})

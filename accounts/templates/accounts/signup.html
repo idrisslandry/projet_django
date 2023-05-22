@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>R&T</title>
+
+    <link href="../../static/css/style2.css" rel= "stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header style="margin-bottom: 12%;">
+    <div>
+      <h3 class="float-md-start mb-0">R&T</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="{% url 'index' %}">Accueil</a>
+        <a class="nav-link" href="{% url 'commus' %}">Commutateurs</a>
+        <a class="nav-link" href="{% url 'routeurs' %}">Routeurs</a>
+        
+        {% if user.compte %}
+          <a class="nav-link active" aria-current="page" href="{% url 'compte' %}">{{ user.username }}</a>
+        {% endif %}
+
+
+         <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+         <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+
+      </nav>
+    </div>
+  </header>
+
+{% block content %}
+  <h1>Ajouter utilisateur</h1>
+  <br>
+  <form method="POST">
+    {% csrf_token %}
+    <p>
+        <label for="username">Nom d'utilisateur : </label>
+        <input id="username" type="text" name="username" autocomplete="off">
+    </p>
+    <p>
+        <label for="password">Password : </label>
+        <input type="password" name="password">
+    </p>
+
+    <div class="button-retour" style=" width:100%; text-align: center;">
+      <input class="btn btn-secondary my-2" type="button" value="retour" onclick="history.go(-1)">
+      <button type="submit" class="btn btn-secondary my-2">Ajouter</button>
+  </div>
+
+  </form>
+
+{% endblock %}
