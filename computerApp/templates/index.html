@@ -8,7 +8,7 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>R&T </title>
     
-    <link href="../../static/css/style2.css" rel= "stylesheet">
+    <link href="/static/css/style.css" rel= "stylesheet">
 
     <!-- Custom styles for this template -->
     
@@ -49,7 +49,7 @@
       <a href="{% url 'routeurs' %}" class="btn btn-secondary my-2">Routeurs</a>
     </p>
       {% if user.is_authenticated %}
-          <a href="https://app.diagrams.net/" class="btn btn-secondary my-2">Typologie</a>
+          <a href="https://app.diagrams.net/" class="btn btn-secondary my-2">Topologie</a>
       {% else %}
           <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
       {% endif %}
