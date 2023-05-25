@@ -1,0 +1,15 @@
+<nav class="nav nav-masthead justify-content-center float-md-end">
+    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Accueil</a>
+    <a class="nav-link" href="{% url 'commus' %}">Commutateurs</a>
+    <a class="nav-link" href="{% url 'routeurs' %}">Routeurs</a>
+
+    {% if user.compte %}
+      <a class="nav-link" href="{% url 'compte' %}">{{ user.username }}</a>
+    {% endif %}
+    
+    
+      <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+      <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+   
+
+  </nav>
