@@ -18,5 +18,6 @@ urlpatterns = [
 	path ('routeurs/<str:slug>', views.routeur_detail, name ='routeur_detail'),
 	path ('add_commu/', views.add_commu, name='add_commu'),
 	path ('add_routeur/', views.add_routeur, name='add_routeur'),
+	path('routeurs/<pk>/delete/', views.delete_routeur, name='delete_routeur'),
 	
 ]

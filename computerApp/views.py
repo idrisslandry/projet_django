@@ -51,4 +51,21 @@ def add_routeur (request):
 		return render(request, 'computerapp/add_routeur.html', context={"form": form})
 
 
+def delete_commu (request, pk):
+	commu = get_object_or_404(Commu, id=pk)
+	if request.method == "POST":
+		commu.delete()
+		return redirect('commu')
+	context = {'commu':commu}
+	return render(request, 'computerapp/delete_commu.html', context)
+
+
+def delete_routeur (request, pk):
+	routeur = get_object_or_404(Routeur, id=pk)
+	if request.method == "POST":
+		routeur.delete()
+		return redirect('routeur')
+	context = {'routeur':routeur}
+	return render(request, 'computerapp/delete_routeur.html', context)
+
 

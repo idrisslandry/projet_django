@@ -60,7 +60,8 @@
                         <input class="btn btn-secondary my-2" type="button" value="retour" onclick="history.go(-1)">
                       </div>
                       <div class="button-sup">
-                        <button class="btn btn-secondary my-2" type="submit" class="delete_btn">Suppression</button>
+                        <button href="delete_routeur.html" class="btn btn-secondary my-2" type="submit" class="delete_btn">Suppression</button>
+                        <a href="{% url 'delete_routeur' routeur.id %}" class="btn btn-secondary my-2"> supprimer {{ routeur.name }}</a>
                       </div>
                       <div class="button-sup" style="margin-right:35%;">
                         <button class="btn btn-secondary my-2" type="submit" >Modifier</button>
