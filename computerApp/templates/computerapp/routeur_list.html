@@ -51,7 +51,6 @@
             <!-- <a href= "{% url 'routeur_detail' routeur.slug %}"> Voir detail </a>  Autre methode--> 
             <a class="btn btn-secondary my-2" href= "{{ routeur.get_absolute_url }}"> Voir detail </a>
         </div>
-        <br><br>
         {% endfor %}
     </div>
     {% else %}

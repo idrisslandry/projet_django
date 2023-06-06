@@ -45,9 +45,7 @@
             <div class="div2">
               <h3>{{ routeur.name }} ({{ routeur.zone }})</h3>
               {% load static %}
-                <img src="{% static 'computerapp/images/r1.jpeg' %}" alt="{{ commu.name }}">
-                <!-- <a href= "{% url 'routeur_detail' routeur.slug %}"> Voir detail </a>  Autre methode--> 
-                <br><br>
+                <img src="{% static 'computerapp/images/r1.jpeg' %}" alt="{{ routeur.name }}">
                 <div class="">
                     <p>Marque: {{ routeur.marque }}</p> 
                     <p>administrateur: {{ routeur.administrateur }}</p> 
@@ -60,8 +58,7 @@
                         <input class="btn btn-secondary my-2" type="button" value="retour" onclick="history.go(-1)">
                       </div>
                       <div class="button-sup">
-                        <button href="delete_routeur.html" class="btn btn-secondary my-2" type="submit" class="delete_btn">Suppression</button>
-                        <a href="{% url 'delete_routeur' routeur.id %}" class="btn btn-secondary my-2"> supprimer {{ routeur.name }}</a>
+                        <a href="{% url 'delete_routeur' routeur.id %}" class="btn btn-secondary my-2"> Supprimer {{ routeur.name }}</a>
                       </div>
                       <div class="button-sup" style="margin-right:35%;">
                         <button class="btn btn-secondary my-2" type="submit" >Modifier</button>

@@ -12,7 +12,7 @@ def index(request):
 
 def commu_list_view (request):
 		commu = Commu.objects.all()
-		context = {'commus': commu}
+		context = {'commutateurs': commu}
 		return render (request,'computerapp/commu_list.html', context)
 			
 
@@ -62,10 +62,8 @@ def delete_commu (request, pk):
 
 def delete_routeur (request, pk):
 	routeur = get_object_or_404(Routeur, id=pk)
-	if request.method == "POST":
-		routeur.delete()
-		return redirect('routeur')
-	context = {'routeur':routeur}
-	return render(request, 'computerapp/delete_routeur.html', context)
+	routeur.delete()
+
+	return redirect('routeurs')
 
 

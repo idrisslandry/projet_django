@@ -40,18 +40,16 @@
 <br><br>
     <h1> Liste des Commutateurs</h1>
     <br>
-    {% if routeurs %}
+    {% if commutateurs %}
     <div class="div1">
-        {% for Commutateur in Commutateurs %}
+        {% for commutateur in commutateurs %}
         <div class="div2">
             <h3>{{ commutateur.name }} ({{ commutateur.zone }})</h3>
             {% load static %}
-            <img src="{% static 'computerapp/images/s1.jpeg' %}" alt="{{ commu.name }}">
+            <img src="{% static 'computerapp/images/s1.jpeg' %}" alt="{{ commutateur.name }}">
         
-            <!-- <a href= "{% url 'routeur_detail' routeur.slug %}"> Voir detail </a>  Autre methode--> 
-            <a class="btn btn-secondary my-2" href= "{{ commu.get_absolute_url }}"> Voir detail </a>
+            <a class="btn btn-secondary my-2" href= "{{ commutateur.get_absolute_url }}"> Voir detail </a>
         </div>
-        <br><br>
         {% endfor %}
     </div>
     {% else %}
@@ -61,4 +59,3 @@
  <a class="btn btn-secondary my-2" href="{% url 'add_commu' %}">Ajouter</a>
  <br><br>
 {% endblock %}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
