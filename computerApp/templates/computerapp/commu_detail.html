@@ -42,12 +42,12 @@
     <br>
     {% if commu %}
       <div class="div1">
-            <div class="div2">
+            <div class="mb-3">
               <h3>{{ commu.name }} ({{ commu.zone }})</h3>
               {% load static %}
-                <img src="{% static 'computerapp/images/r1.jpeg' %}" alt="{{ commu.name }}">
+                <img src="{% static 'computerapp/images/s1.jpeg' %}" alt="{{ commu.name }}">
      
-                <div class="">
+                <div class="mb-3">
                     <p>Marque: {{ commu.marque }}</p> 
                     <p>administrateur: {{ commu.administrateur }}</p> 
                     <p>zone de commutation: {{ commu.zone }}</p> 
@@ -59,7 +59,7 @@
                         <input class="btn btn-secondary my-2" type="button" value="retour" onclick="history.go(-1)">
                       </div>
                       <div class="button-sup">
-                        <button href="delete_commu.html" class="btn btn-secondary my-2" type="submit" class="delete_btn">Suppression</button>
+                      
                         <a href="{% url 'delete_commu' commu.id %}" class="btn btn-secondary my-2"> supprimer {{ commu.name }}</a>
                       </div>
                       <div class="button-sup" style="margin-right:35%;">

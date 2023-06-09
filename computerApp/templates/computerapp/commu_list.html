@@ -28,10 +28,13 @@
         {% if user.compte %}
           <a class="nav-link" href="{% url 'compte' %}">{{ user.username }}</a>
         {% endif %}
-        
-          <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
-          <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
-
+        {% if user.is_authenticated %}
+              <a class="nav-link mx-5"  href="{% url 'logout' %}">Déconnexion</a>
+            </li>
+            {% else %}
+              <a class="nav-link mx-5" href="{% url 'login' %}">Se connecter</a>
+            </li>
+            {% endif %}
       </nav>
     </div>
   </header>
@@ -41,10 +44,10 @@
     <h1> Liste des Commutateurs</h1>
     <br>
     {% if commutateurs %}
-    <div class="div1">
+    <div class="row">
         {% for commutateur in commutateurs %}
-        <div class="div2">
-            <h3>{{ commutateur.name }} ({{ commutateur.zone }})</h3>
+        <div class="card border-info mb-3 col col-md-4" >
+            <h3 class="card-title" >{{ commutateur.name }} ({{ commutateur.zone }})</h3>
             {% load static %}
             <img src="{% static 'computerapp/images/s1.jpeg' %}" alt="{{ commutateur.name }}">
         
@@ -56,6 +59,6 @@
     <p>Il n\'y a pas de Commutateurs. </p>
  {% endif %}
 
- <a class="btn btn-secondary my-2" href="{% url 'add_commu' %}">Ajouter</a>
+ <a class="btn btn-success" href="{% url 'add_commu' %}">Ajouter</a>
  <br><br>
 {% endblock %}

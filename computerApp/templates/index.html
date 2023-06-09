@@ -42,12 +42,17 @@
               <a class="nav-link disabled" href="{% url 'compte' %}"> {{ user.username }} </a>
               {% endif %}
             </li>
+          </ul>
+          <ul class="navbar-nav ms-auto"> 
+          {% if user.is_authenticated %}
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+            <a class="nav-link mx-5"  href="{% url 'logout' %}">Déconnexion</a>
           </li>
+          {% else %}
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+            <a class="nav-link mx-5" href="{% url 'login' %}">Se connecter</a>
           </li>
+          {% endif %}
           </ul>
         </div>
       </div>
